@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Component Inventory</title>
+  </head>
+  <body>
+    <h1>Component Inventory</h1>
+
+    <h2>Products</h2>
+    <ul>
+      {% for component in components %}
+      <li>
+        {{ component.name }} - {{ component.barcode }} - {{ component.weight }}
+        - {{ component.price }}
+      </li>
+      {% endfor %}
+    </ul>
+
+    <h2>Check Product by Barcode</h2>
+    <form action="/check_barcode" method="post">
+      <label for="barcode">Barcode:</label><br />
+      <input
+        type="text"
+        id="barcode1"
+        name="barcode1"
+        value="{{ session['barcode'] }}"
+      /><br />
+      <input type="submit" value="Check" />
+    </form>
+  </body>
+</html>
