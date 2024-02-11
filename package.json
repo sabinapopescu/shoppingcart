@@ -1,0 +1,25 @@
+{
+  "name": "innit",
+  "version": "1.0.0",
+  "description": "shopping cart website",
+  "main": "node main.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sabinapopescu/shoppingcart.git"
+  },
+  "keywords": [
+    "\"shopping\""
+  ],
+  "author": "nline\",",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sabinapopescu/shoppingcart/issues"
+  },
+  "homepage": "https://github.com/sabinapopescu/shoppingcart#readme"
+}

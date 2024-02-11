@@ -101,3 +101,70 @@
     
 })(jQuery);
 
+// Define your products list (replace this with your actual data)
+const products = [
+    { name: "Product 1", price: 10.99 },
+    { name: "Product 2", price: 15.99 },
+    { name: "Product 3", price: 7.99 },
+    // Add more products as needed
+];
+
+// Function to perform search
+function performSearch(query) {
+    const searchResultsElement = document.getElementById('searchResults');
+    searchResultsElement.innerHTML = ''; // Clear previous search results
+
+    const filteredProducts = products.filter(product => {
+        return product.name.toLowerCase().includes(query.toLowerCase());
+    });
+
+    filteredProducts.forEach(product => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+        listItem.innerHTML = `
+            <span>${product.name}</span>
+            <span>$${product.price.toFixed(2)}</span>
+        `;
+        searchResultsElement.appendChild(listItem);
+    });
+
+    if (filteredProducts.length === 0) {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-group-item', 'text-muted');
+        listItem.textContent = 'No results found';
+        searchResultsElement.appendChild(listItem);
+    }
+}
+
+// Event listener for search button click
+document.getElementById('searchButton').addEventListener('click', () => {
+    const searchInput = document.getElementById('searchInput');
+    const query = searchInput.value.trim();
+
+    if (query !== '') {
+        performSearch(query);
+    }
+});
+
+
+// Function to render the shopping cart items dynamically
+function renderShoppingCartItems() {
+    const cartItemsElement = document.getElementById('cartItems');
+
+    // Clear existing items
+    cartItemsElement.innerHTML = '';
+
+    // Loop through each item in the shopping cart and create list item for each
+    shoppingCartItems.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+        listItem.innerHTML = `
+            <span>${item.name}</span>
+            <span>$${item.price.toFixed(2)}</span>
+        `;
+        cartItemsElement.appendChild(listItem);
+    });
+}
+
+// Call the function to render the shopping cart items when the page loads
+window.addEventListener('DOMContentLoaded', renderShoppingCartItems);
